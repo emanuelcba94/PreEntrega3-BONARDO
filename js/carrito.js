@@ -66,26 +66,10 @@ function cargarProductosCarrito() {
 
 cargarProductosCarrito();
 
-/* <img class="carrito-producto-img" src="./img/nike/nike-01.jpg" alt="">
-<div class="carrito-producto-info">
-    <small>Producto</small>
-    <h3>Nike 01</h3>
-</div>
-<div class="carrito-producto-cantidad">
-    <small>Cantidad</small>
-    <p>1</p>
-</div>
-<div class="carrito-producto-precio">
-    <small>Precio</small>
-    <p>$1000</p>
-</div>
-<button class="carrito-producto-eliminar">Eliminar <i class="bi bi-trash3-fill"></i></i></button> */
-
-
 // -------------------------- boton eliminar producto -------------------------- //
 function botonEliminar() {
     botonesEliminar = document.querySelectorAll(".carrito-producto-eliminar");
-
+    
     botonesEliminar.forEach(boton => { 
         boton.addEventListener("click", eliminarDeCarrito);
     });
@@ -94,11 +78,28 @@ function botonEliminar() {
 function eliminarDeCarrito(e) {
     const idBoton = e.currentTarget.id;
     const index = productosCarrito.findIndex(producto => producto.id === idBoton);
-    productosCarrito.splice(index, 1);
-
-    cargarProductosCarrito();
-
-    localStorage.setItem("productos-carrito:", JSON.stringify(productosCarrito));
+    
+    // libreria sweetalert2
+    Swal.fire({
+        title: 'Seguro desea Eliminar?',
+        text: "Se eliminara el producto seleccionado!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+        Swal.fire(
+            'Eliminado!',
+            'El producto selecionado fue eliminado.',
+            'success',
+            productosCarrito.splice(index, 1),
+            cargarProductosCarrito(),
+            localStorage.setItem("productos-carrito:", JSON.stringify(productosCarrito)),
+            )
+        }
+    })
 }
 
 // -------------------------- precio total productos -------------------------- //
@@ -118,4 +119,12 @@ function comprarCarrito() {
     carritoProductos.classList.add("disabled");
     carritoAcciones.classList.add("disabled");
     carritoComprado.classList.remove("disabled");
+
+    Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: '¡Tu compra fue realizada con exito!',
+        showConfirmButton: false,
+        timer: 3000
+    })
 }

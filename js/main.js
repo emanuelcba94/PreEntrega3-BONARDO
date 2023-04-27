@@ -1,79 +1,13 @@
-// -------------------------- array de productos -------------------------- // 
-const productosMasZapas = [
-    {
-        id: "nike-01",
-        titulo: "Nike 01",
-        foto: "./img/nike/nike-01.jpg",
-        precio: 35499
-    },
-    {
-        id: "nike-02",
-        titulo: "Nike 02",
-        foto: "./img/nike/nike-02.jpg",
-        precio: 33999
-    },
-    {
-        id: "nike-03",
-        titulo: "Nike 03",
-        foto: "./img/nike/nike-03.jpg",
-        precio: 43499
-    },
-    {
-        id: "nike-04",
-        titulo: "Nike 04",
-        foto: "./img/nike/nike-04.jpg",
-        precio: 49999
-    },
-    {
-        id: "nike-05",
-        titulo: "Nike 05",
-        foto: "./img/nike/nike-05.jpg",
-        precio: 43399
-    },
-    {
-        id: "nike-06",
-        titulo: "Nike 06",
-        foto: "./img/nike/nike-06.jpg",
-        precio: 31999
-    },
-    {
-        id: "puma-01",
-        titulo: "Puma 01",
-        foto: "./img/puma/puma-01.jpg",
-        precio: 39999
-    },
-    {
-        id: "puma-02",
-        titulo: "Puma 02",
-        foto: "./img/puma/puma-02.jpg",
-        precio: 42499
-    },
-    {
-        id: "puma-03",
-        titulo: "Puma 03",
-        foto: "./img/puma/puma-03.jpg",
-        precio: 45499
-    },
-    {
-        id: "puma-04",
-        titulo: "Puma 04",
-        foto: "./img/puma/puma-04.jpg",
-        precio: 55.499
-    },
-    {
-        id: "puma-05",
-        titulo: "Puma 05",
-        foto: "./img/puma/puma-05.jpg",
-        precio: 43999
-    },
-    {
-        id: "puma-06",
-        titulo: "Puma 06",
-        foto: "./img/puma/puma-06.jpg",
-        precio: 62499
-    },
-    
-]
+// -------------------------- productos desde el JSON -------------------------- // 
+let productosMasZapas = [];
+
+fetch("./productos.json")
+    .then(res => res.json())
+    .then(data => {
+        productosMasZapas = data;
+        cargarProductos(); 
+        botonAgregar();
+    })
 
 // -------------------------- nodos -------------------------- // 
 const contenedorProductos = document.querySelector("#contenedor-productos");    //--> agregar productos
@@ -101,17 +35,6 @@ function cargarProductos() {
 
 } 
 cargarProductos();
-
-/* 
-<div class="producto">
-<img class="producto-imagen" src="./img/nike/nike-01.jpg" alt="">
-<div class="producto-detalles">
-    <h3 class="producto-titulo">Nike 01</h3>
-    <p class="producto-precio">$1000</p>
-    <button class="producto-agregar">Agregar</button>
-</div>
-</div> 
-*/
 
 // -------------------------- botones agregar productos -------------------------- // 
 function botonAgregar() {
@@ -156,6 +79,24 @@ function agregarAlCarrito(e) {
     // -------------------------- localStorage -------------------------- // 
     localStorage.setItem("productos-carrito:", JSON.stringify(carritoMasZapas));
     // console.log(productoAgregado);
+
+    // libreria toastify 
+    Toastify({
+        text: "Producto Agregado",
+        duration: 2000,
+        destination: "./carrito.html",
+        newWindow: true,
+        close: true,
+        gravity: "top", 
+        position: "center", 
+        stopOnFocus: true,
+        style: {
+        background: "linear-gradient(to right, #ffa65e, #FF7300)",
+        textTransform: "uppercase",
+        fontWeight: "600",
+        },
+        onClick: function(){} 
+    }).showToast();
 }
 
 // -------------------------- numero carrito -------------------------- //

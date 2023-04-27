@@ -27,7 +27,9 @@ img {
 /* variables de colores */
 :root {
     --color-main: #FF7300;
+    --color-main1: #ffa65e;
     --color-main2: #FD4646;
+    --color-main3: #ff7b7b;
     --color-negro: #000000;
     --color-blanco: #FFFFFF;
 }
