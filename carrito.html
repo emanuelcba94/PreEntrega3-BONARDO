@@ -40,6 +40,62 @@
 
             </div>
 
+            <!-- formulario contenedor datos personales -->
+            <div class="formulario-contenedor">
+                <!-- formulario -->
+                <form action="" class="formulario" id="formulario">
+                    <!-- titulo -->
+                    <h3 class="formulario-titulo">Ingresa tus datos</h3>
+                    <!-- Nombre -->
+                    <div class="formulario__grupo" id="grupo__nombre">
+                        <label for="nombre" class="formulario__label">Nombre</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="nombre" id="nombre">
+                            <i class="formulario__validacion-estado bi bi-x-circle-fill"></i>
+                        </div>
+                        <p class="formulario__input-error">El nombre tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guin bajo.</p>
+                    </div>
+                    <!-- Apellido -->
+                    <div class="formulario__grupo" id="grupo__apellido">
+                        <label for="apellido" class="formulario__label">Apellido</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="apellido" id="apellido">
+                            <i class="formulario__validacion-estado bi bi-x-circle-fill"></i>
+                        </div>
+                        <p class="formulario__input-error">El apellido tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guin bajo.</p>
+                    </div>
+                    <!-- Correo Electrónico -->
+                    <div class="formulario__grupo" id="grupo__correo">
+                        <label for="correo" class="formulario__label">Correo Electrónico</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="correo" id="correo" placeholder="ejemplo@correo.com">
+                            <i class="formulario__validacion-estado bi bi-x-circle-fill"></i>
+                        </div>
+                        <p class="formulario__input-error">El correo solo debe contener letras, numeros, puntos, guiones y guion bajo.</p>
+                    </div>
+                    <!-- Teléfono -->
+                    <div class="formulario__grupo" id="grupo__telefono">
+                        <label for="telefono" class="formulario__label">Teléfono</label>
+                        <div class="formulario__grupo-input">
+                            <input type="text" class="formulario__input" name="telefono" id="telefono" placeholder="351 5235485">
+                            <i class="formulario__validacion-estado bi bi-x-circle-fill"></i>
+                        </div>
+                        <p class="formulario__input-error">El teléfono solo puede contener numeros y el maximo son 14 dígitos.</p>
+                    </div>
+                    <!-- Terminos y condiciones -->
+                    <div class="formulario__grupo formulario__grupo-terminos" id="grupo_terminos">
+                        <label class="formulario__label"> 
+                            <input class="formulario__checkbox" type="checkbox" name="terminos" id="terminos">
+                            Acepto los Terminos y condiciones
+                        </label>
+                    </div>
+                    <!-- Btn Guardar -->
+                    <div class="formulario__grupo formulario__grupo-btn-guardar">
+                        <button type="submit" class="formulario__btn">Guardar y continuar</button>
+                    </div>
+                </form>
+            </div>
+
             <!-- carrito acciones -->
             <div class="carrito-acciones disabled" id="carrito-acciones">
                 <!-- acciones total -->
@@ -68,6 +124,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- toastify js -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- form js -->
+    <script src="./js/form.js"></script>
     <!-- js -->
     <script src="./js/carrito.js"></script>
 </body>

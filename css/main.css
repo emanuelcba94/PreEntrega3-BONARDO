@@ -239,6 +239,12 @@ footer {
     color: var(--color-blanco);
 }
 
+.carrito-producto-subtotal {
+    border-top: 1px solid var(--color-blanco);
+    font-weight: 600;
+    padding: 0.5rem;
+    color: var(--color-blanco);
+}
 .carrito-producto-precio {
     border-top: 1px solid var(--color-blanco);
     font-weight: 600;
@@ -256,6 +262,10 @@ footer {
     color: var(--color-main2);
     padding: 0.5rem;
     cursor: pointer;
+}
+
+.carrito-producto-eliminar:hover {
+    letter-spacing: 1px;
 }
 
 /* accion total y finalizar compra */
@@ -280,6 +290,147 @@ footer {
     padding: 1rem;
 }
 
+
+/*********************************************** formulario carrito */
+.formulario-titulo {
+    grid-column: span 2;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    background-color: var(--color-blanco);
+    text-transform: uppercase;
+}
+
+.formulario-contenedor {
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+}
+
+.formulario {
+    background: linear-gradient(90deg, #ffa65e 90%, #FF7300 10%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+.formulario__label {
+    display: block;
+    font-weight: 700;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}   
+
+.formulario__grupo-input {
+    position: relative;
+}
+
+.formulario__input {
+    width: 100%;
+    background: var(--color-blanco);
+    border: 3px solid transparent;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 40px 0 10px;
+    font-size: 18px;
+    transition: .3s ease all;
+}
+
+.formulario__input:focus {
+    border: 3px solid var(--color-main);
+    outline: none;
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.formulario__input-error {
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+/* mostrar con JS */
+.formulario__input-error-activo {
+    display: block;
+}
+
+.formulario__validacion-estado {
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+    z-index: 100;
+    font-size: 16px;
+    /* aparece con JS */
+    opacity: 0;
+}
+
+.formulario__grupo-terminos, 
+.formulario__grupo-btn-guardar {
+    grid-column: span 2;
+}
+
+.formulario__grupo-terminos {
+    margin-left: 10px;
+    text-align: center;
+}
+
+.formulario__grupo-btn-guardar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario__btn {
+    height: 45px;
+    line-height: 45px;
+    width: 40%;
+    background: var(--color-negro);
+    color: var(--color-blanco);
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: .1s ease all;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.formulario__btn:hover {
+    letter-spacing: 1px;
+}
+
+/************* estilos de validacion *************/
+
+.formulario__grupo-correcto
+.formulario__validacion-estado {
+    color: #1ed12d;
+    opacity: 1;
+}
+
+.formulario__grupo-incorrecto 
+.formulario__label {
+    color: var(--color-main2);
+}
+
+.formulario__grupo-incorrecto 
+.formulario__validacion-estado {
+    color: var(--color-main2);
+    opacity: 1;
+}
+
+.formulario__grupo-incorrecto 
+.formulario__input {
+    border: 3px solid var(--color-main2)
+}
+
+/* disabled */
+.formulario-contenedor-disabled {
+    display: none;
+}
+/*********************************************** fin formulario carrito */
+
+
 /* finalizar compra */
 .carrito-comprar {
     background-color: var(--color-main);
@@ -303,6 +454,19 @@ footer {
 }
 
 
+/************************ libreria ************************/
+
+.swal2-title {
+    color: var(--color-blanco)!important;
+}
+
+.swal2-html-container {
+    color: var(--color-blanco)!important;
+}
+.swal2-popup {
+    background-color: var(--color-main)!important;
+}
+
 /************************ Media queries ************************/
 @media screen and (max-width: 1080px) {
 
@@ -325,6 +489,24 @@ footer {
     .contenedor-productos,
     .carrito-productos {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .formulario-titulo {
+        grid-column: 1;
+    }
+    
+    .formulario {
+        background: linear-gradient(90deg, #ffa65e 90%, #FF7300 10%);
+        grid-template-columns: 1fr;
+    }
+
+    .formulario__grupo-terminos,
+    .formulario__grupo-btn-guardar {
+    grid-column: 1;
+    }
+
+    .formulario__btn {
+        width: 100%;
     }
 }
 

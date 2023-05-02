@@ -22,6 +22,8 @@ function cargarProductosCarrito() {
         carritoVacioImg.classList.add("disabled");
         carritoProductos.classList.remove("disabled");
         carritoAcciones.classList.remove("disabled");
+        // formulario
+        formulario.classList.remove("disabled");
         carritoComprado.classList.add("disabled");
     
         // carrito html vacio
@@ -45,8 +47,11 @@ function cargarProductosCarrito() {
                     <small>Precio</small>
                     <p>$${producto.precio}</p>
                 </div>
+                <div class="carrito-producto-subtotal">
+                    <small>Subtotal</small>
+                    <p>$${producto.precio * producto.cantidad}</p>
+                </div>
                 <button class="carrito-producto-eliminar" id="${producto.id}">Eliminar <i class="bi bi-trash3-fill"></i></i></button>
-    
             `
             carritoProductos.append(div);
         });
@@ -56,6 +61,8 @@ function cargarProductosCarrito() {
         carritoVacioImg.classList.remove("disabled");
         carritoProductos.classList.add("disabled");
         carritoAcciones.classList.add("disabled");
+        // formulario
+        formulario.classList.add("disabled");
         carritoComprado.classList.add("disabled");
     }
     // boton de liminar producto
@@ -118,13 +125,18 @@ function comprarCarrito() {
     carritoVacio.classList.add("disabled");
     carritoProductos.classList.add("disabled");
     carritoAcciones.classList.add("disabled");
+    // formulario
+    formulario.classList.add("disabled");
     carritoComprado.classList.remove("disabled");
+
+    nombreLS = localStorage.getItem("nombre");
 
     Swal.fire({
         position: 'top-center',
         icon: 'success',
-        title: '¡Tu compra fue realizada con exito!',
+        title: `¡Gracias ${nombreLS.toUpperCase()}!\n ¡Tu compra fue realizada con exito!`,
         showConfirmButton: false,
         timer: 3000
     })
+    localStorage.removeItem("nombre");
 }
